@@ -13,6 +13,7 @@
   <a href="#credits">Credits</a> •
 </p>
 
+![screenshot](https://raw.githubusercontent.com/marahaly/menu-tree-system-react-frontend/master/public/MenuTreeSystem.png)
 
 ## Key Features
 
