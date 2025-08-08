@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ChevronDown, ChevronRight } from 'lucide-react';
+import { ChevronDown, ChevronRight } from 'lucide-react'
+import { getMenus, getMenuById } from './services/api'
 
 interface TreeNodeData {
   id: string;
@@ -86,44 +87,10 @@ function TreeNode({ node, level }: TreeNodeProps) {
 }
 
 function TreeViewMenu() {
-  const treeData: TreeNodeData[] = [
-    {
-      id: '1',
-      label: 'system management',
-      children: [
-        {
-          id: '2',
-          label: 'System Management',
-          children: [
-            {
-              id: '3',
-              label: 'Systems',
-              children: [
-                {
-                  id: '4',
-                  label: 'System Code',
-                  children: [
-                    {
-                      id: '5',
-                      label: 'Code Registration'
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              id: '6',
-              label: 'Code Registration'
-            },
-            {
-              id: '7',
-              label: 'Properties'
-            }
-          ]
-        }
-      ]
-    }
-  ];
+  const treeData = async () => {
+    const resp = await getMenus()
+    return resp.data
+  } 
 
   return (
     <div className="bg-white border border-gray-200 rounded-lg shadow-sm">

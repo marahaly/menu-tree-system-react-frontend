@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import TreeViewMenu from './TreeViewMenu';
+import { getMenus, getMenuById } from './services/api'
 
 const MenusForm = () => {
   const [selectedSystem, setSelectedSystem] = useState('system management');
@@ -10,12 +11,10 @@ const MenusForm = () => {
   const [parentData, setParentData] = useState('Systems');
   const [name, setName] = useState('System Code');
 
-  const systemOptions = [
-    'system management',
-    'user management',
-    'content management',
-    'api management'
-  ];
+  const systemOptions = async () => {
+      const resp = await getMenuById()
+      return resp.data
+  } 
 
   const handleSave = () => {
     console.log('Form data:', {
